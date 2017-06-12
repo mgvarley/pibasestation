@@ -1,0 +1,14 @@
+[Unit]
+Description=AutoSSH TCP tunnel from pi to digitalocean
+Wants=network-online.target
+After=network-online.target
+Before=multi-user.target
+
+[Service]
+User=pi
+ExecStart=/usr/bin/autossh -M 0 -N -q -o "ServerAliveInterval=30" -o "ServerAliveCountMax=3" -L 1234:127.0.0.1:1234 $AIS_USER:$AIS_PASSWORD@$AIS_HOST
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target
