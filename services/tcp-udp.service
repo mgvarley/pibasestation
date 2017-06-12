@@ -1,0 +1,12 @@
+[Unit]
+Description= forward TCP port 1234 to UDP port data.aishub.net:2557
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/socat -v TCP-LISTEN:1234,fork UDP:data.aishub.net:2557
+Restart=always
+RestartSec=20
+
+[Install]
+WantedBy=multi-user.target
