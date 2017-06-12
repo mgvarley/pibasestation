@@ -1,3 +1,7 @@
+# Blacklisting the USB device
+echo Blacklisting USB device
+modprobe -r dvb_usb_rtl28xxu
+
 # Start the AIS service
 echo Starting AIS Service
 systemctl start ais.service
