@@ -6,7 +6,7 @@ Before=multi-user.target
 
 [Service]
 User=pi
-ExecStart=/usr/bin/autossh -M 0 -N -q -o "ServerAliveInterval=30" -o "ServerAliveCountMax=3" -L 1234:127.0.0.1:1234 ais@46.101.246.86 -i /home/pi/.ssh/id_rsa
+ExecStart=/usr/bin/autossh -M 0 -N -q -o "ServerAliveInterval=30" -o "ServerAliveCountMax=3" -L 1234:127.0.0.1:1234 ais:3aQvwLMM@46.101.246.86
 Restart=always
 RestartSec=60
 
