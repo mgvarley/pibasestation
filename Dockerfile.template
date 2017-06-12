@@ -21,19 +21,19 @@ RUN curl -SLO "http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-a
     rm -rf /tmp/*
 
 # Blacklist device
-RUN echo -e "blacklist dvb_usb_rtl28xxu\nblacklist rtl2832\nblacklist rtl2830" | sudo tee /etc/modprobe.d/no-rtl.conf
+RUN echo 'blacklist dvb_usb_rtl28xxu\nblacklist rtl2832\nblacklist rtl2830' > /etc/modprobe.d/no-rtl.conf
+
+# Defines our working directory in container
+WORKDIR /usr/src/app
 
 # Install rtl-ais
 RUN git clone https://github.com/dgiardini/rtl-ais
 RUN cd rtl-ais
 RUN make
-RUN sudo cp rtl_ais /usr/local/bin/
+RUN cp rtl_ais /usr/local/bin/
 
 # Copy SSH keys up to the Digital Ocean box
 RUN ssh-copy-id ais:3aQvwLMM@46.101.246.86
-
-# Defines our working directory in container
-WORKDIR /usr/src/app
 
 # Copies the package.json first for better cache on later pushes
 COPY package.json package.json
