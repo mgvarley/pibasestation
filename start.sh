@@ -10,9 +10,6 @@ sudo systemctl enable autossh.service
 sudo systemctl start udp-tcp.service
 sudo systemctl enable udp-tcp.service
 
-# Copy SSH keys up to the Digital Ocean box
-ssh-copy-id ais:***REMOVED***@46.101.246.86
-
 # Start the tcp-udp service
 sudo systemctl start tcp-udp.service
 sudo systemctl enable tcp-udp.service
