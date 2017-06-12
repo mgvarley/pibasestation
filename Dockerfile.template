@@ -21,7 +21,7 @@ RUN curl -SLO "http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-a
     rm -rf /tmp/*
 
 # Blacklist device
-RUN echo 'blacklist dvb_usb_rtl28xxu\nblacklist rtl2832\nblacklist rtl2830' > /etc/modprobe.d/no-rtl.conf
+RUN echo 'blacklist dvb_usb_rtl28xxu' > /etc/modprobe.d/blacklist.conf
 
 # Defines our working directory in container
 WORKDIR /usr/src/app
@@ -30,6 +30,7 @@ WORKDIR /usr/src/app
 RUN git clone https://github.com/dgiardini/rtl-ais /usr/src/app/rtl-ais
 RUN cd /usr/src/app/rtl-ais && make
 RUN cp /usr/src/app/rtl-ais/rtl_ais /usr/local/bin/
+RUN modprobe -r dvb_usb_rtl28xxu
 
 # Copies the package.json first for better cache on later pushes
 COPY package.json package.json
