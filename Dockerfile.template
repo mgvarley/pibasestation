@@ -31,9 +31,6 @@ RUN git clone https://github.com/dgiardini/rtl-ais /usr/src/app/rtl-ais
 RUN cd /usr/src/app/rtl-ais && make
 RUN cp /usr/src/app/rtl-ais/rtl_ais /usr/local/bin/
 
-# Copy SSH keys up to the Digital Ocean box
-RUN ssh-copy-id ais:***REMOVED***@46.101.246.86
-
 # Copies the package.json first for better cache on later pushes
 COPY package.json package.json
 
