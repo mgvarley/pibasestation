@@ -1,0 +1,12 @@
+[Unit]
+Description= forward UDP port 10110 to TCP port 1234
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/socat -v UDP-LISTEN:10110,fork TCP:localhost:1234
+Restart=always
+RestartSec=20
+
+[Install]
+WantedBy=multi-user.target
