@@ -8,7 +8,7 @@ FROM resin/%%RESIN_MACHINE_NAME%%-buildpack-deps
 # for instance if you need ALSA sound utils, just uncomment the lines below.
 RUN apt-get update && apt-get install -yq \
     cmake rtl-sdr librtlsdr-dev libusb-1.0-0-dev \
-    git nmap socat iptraf autossh vim && \
+    git nmap socat iptraf autossh vim sshpass && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install node
@@ -36,6 +36,10 @@ COPY package.json package.json
 
 # Copy the services to the systemd folder
 COPY services/* /etc/systemd/system/
+
+# Generate an ssh key and copy up to the forwarder server
+RUN echo -e  'y\n'|ssh-keygen -q -t rsa -N "" -f ~/.ssh/id_rsa 1>/dev/null
+RUN sshpass -p "%%AIS_PASSWORD%%" ssh-copy-id %%AIS_USER%%@%%AIS_HOST%%
 
 # This install npm dependencies on the resin.io build server,
 # making sure to clean up the artifacts it creates in order to reduce the image size.
