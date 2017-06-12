@@ -1,18 +1,23 @@
 # Start the AIS service
-sudo systemctl start ais.service
-sudo systemctl enable ais.service
+echo Starting AIS Service
+systemctl start ais.service
+systemctl enable ais.service
 
 # Start the autossh service
-sudo systemctl start autossh.service
-sudo systemctl enable autossh.service
+echo Starting autossh Service
+systemctl start autossh.service
+systemctl enable autossh.service
 
 # Start the udp-tcp service
-sudo systemctl start udp-tcp.service
-sudo systemctl enable udp-tcp.service
+echo Starting udp-tcp Service
+systemctl start udp-tcp.service
+systemctl enable udp-tcp.service
 
 # Start the tcp-udp service
-sudo systemctl start tcp-udp.service
-sudo systemctl enable tcp-udp.service
+echo Starting tcp-udp Service
+systemctl start tcp-udp.service
+systemctl enable tcp-udp.service
 
 # Start the web app
+echo Starting web app
 npm start
