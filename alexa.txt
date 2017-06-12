@@ -1,0 +1,18 @@
+Security Profile Description 
+Choose a description for your security profile for Amazon services to use in communicating with you.	RaspberryPi
+Security Profile ID 
+This ID will identify your security profile in Amazon services.	amzn1.application.bc223eb7260a49128ae6efc051d00886
+Client ID   
+This is a value specific to you that is assigned to you when you register with Login with Amazon.	amzn1.application-oa2-client.7020dfcca4984908b8d6852f5160b4d3
+Client Secret   
+This is a secret specific to you that is assigned to you when you register with Login with Amazon. Confidential.	47c3b4b0a6bd331a5a35efd5a6dc4145de7e9a715da0913c64edd7a95526d64a
+
+
+http://lifehacker.com/how-to-build-your-own-amazon-echo-with-a-raspberry-pi-1787726931
+git clone https://github.com/alexa/alexa-avs-sample-app.git
+
+
+To run the demo, do the following in 3 seperate terminals:
+Run the companion service: cd /home/pi/alexa-avs-sample-app/samples/companionService && npm start
+Run the AVS Java Client: cd /home/pi/alexa-avs-sample-app/samples/javaclient && mvn exec:exec
+Run the wake word agent: cd /home/pi/alexa-avs-sample-app/samples/wakeWordAgent/src && sudo ./wakeWordAgent -e kitt_ai
