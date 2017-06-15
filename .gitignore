@@ -7,5 +7,8 @@
 # Don't push node_modules - we want the build server to install these.
 node_modules/
 
-#OSX hidden metadata file
+# OSX hidden metadata file
 .DS_Store
+
+# Passwords
+passwords.txt
