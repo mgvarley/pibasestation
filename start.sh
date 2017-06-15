@@ -7,6 +7,11 @@ echo Starting AIS Service
 systemctl start ais.service
 systemctl enable ais.service
 
+# Generate an ssh key and copy up to the forwarder server
+echo Generating SSH key and pushing to forwarder
+echo -e  'y\n'|ssh-keygen -q -t rsa -N "" -f /root/.ssh/id_rsa 1>/dev/null
+sshpass -e ssh-copy-id -i /root/.ssh/id_rsa -o StrictHostKeyChecking=no ais@46.101.246.86
+
 # Start the autossh service
 echo Starting autossh Service
 systemctl start autossh.service
