@@ -39,8 +39,8 @@ COPY services/* /etc/systemd/system/
 
 # Generate an ssh key and copy up to the forwarder server
 RUN apt-get update && apt-get install sshpass
-RUN echo -e  'y\n'|ssh-keygen -q -t rsa -N "" -f /home/pi/.ssh/id_rsa 1>/dev/null
-RUN sshpass -p "3aQvwLMM" ssh-copy-id -o StrictHostKeyChecking=no ais@46.101.246.86
+RUN echo -e  'y\n'|ssh-keygen -q -t rsa -N "" -f /root/.ssh/id_rsa 1>/dev/null
+RUN sshpass -p "3aQvwLMM" ssh-copy-id -i /root/.ssh/id_rsa -o StrictHostKeyChecking=no ais@46.101.246.86
 
 # This install npm dependencies on the resin.io build server,
 # making sure to clean up the artifacts it creates in order to reduce the image size.
